@@ -3,8 +3,6 @@
 @section('title','Crud')
 
 @section('content')
-
-DocsGo
-
+Sistema DocsGo
 @endsection
 

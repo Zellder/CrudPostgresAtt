@@ -6,12 +6,12 @@
 
 
 <div class="col-md-10 offset-md-1 dashboard-title-container">
-   <h1>Lista de documentos cadastrados</h1>
+   <h3>Lista de documentos cadastrados</h3>
 </div>
 <div class="col-md-10 offset-md-1 dashboard-documentos-container">
    <table class="table ">
-    <thead>
-     <tr>
+    <thead class="text-light bg-dark">
+     <tr >
       <th scope="col ">#</th>
       <th scope="col">Titulo</th>
       <th scope="col">Descrição</th>
@@ -23,7 +23,7 @@
    <tbody>
     @foreach ($documentos as $documento)
      <tr>
-         <td script="row">{{$loop->index+1}}</td>
+         <td script="row"><strong>{{$loop->index+1}}</strong></td>
          <td>{{$documento->titulo}}</td>
          <td>{{$documento->nome_arquivo}}</td>
          @foreach ($tipo_documentos as $tipo_documento)
@@ -32,12 +32,13 @@
             @endif   
          @endforeach
          <td>
-         <a href="{{ route('consulta.edit',$documento->id) }}" class="btn btn-primary">Editar</a>
          <form action="{{ route('consulta.destroy',$documento->id) }}" method="POST">
          @csrf
          @method('DELETE')
+         <a href="{{ route('consulta.edit',$documento->id) }}" class="btn btn-primary">Editar</a>
          <button type="submit" class="btn btn-danger">Apagar</button>
          </form>
+
          </td>
      </tr>
     @endforeach
